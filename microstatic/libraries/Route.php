@@ -282,7 +282,7 @@ class Route
 	/**
 	 * @return array
 	 */
-	public function getValues(): array
+	public function getValues()
 	{
 		return $this->values;
 	}
@@ -338,7 +338,7 @@ class Route
      *
      * @return Route
      */
-    public function setIsClosure(bool $isClosure): Route
+    public function setIsClosure($isClosure)
     {
         $this->isClosure = $isClosure;
 
@@ -350,7 +350,7 @@ class Route
      *
      * @return bool
      */
-    public function isClosure(bool $bool = null): bool
+    public function isClosure($bool = null)
     {
         if (!is_null($bool)) {
             $this->isClosure = $bool;

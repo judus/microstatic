@@ -55,7 +55,7 @@ class Exception extends \Exception
     /**
      * @return int
      */
-    public function getMyCode(): int
+    public function getMyCode()
     {
         return $this->myCode;
     }
@@ -93,7 +93,7 @@ class Exception extends \Exception
     /**
      * @param string $message
      */
-    public function setMyMessage(string $message)
+    public function setMyMessage($message)
     {
         $message = $message ? $message :
             'Undocumented error at line '
@@ -236,21 +236,21 @@ class Exception extends \Exception
      */
     protected function handleError($prettyMessage, $message)
     {
-        $this->die($prettyMessage);
+        $this->dienow($prettyMessage);
     }
 
     /**
      * @param null $exitMessage
      */
-    protected function exit($exitMessage = null)
+    protected function close($exitMessage = null)
     {
-        exit($exitMessage);
+        close($exitMessage);
     }
 
     /**
      * @param null $exitMessage
      */
-    protected function die($exitMessage = null)
+    protected function dienow($exitMessage = null)
     {
         die($exitMessage);
     }

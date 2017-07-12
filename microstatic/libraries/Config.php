@@ -22,7 +22,7 @@ class Config
     /**
      * @return array
      */
-    public static function getItems(): array
+    public static function getItems()
     {
         return self::$items;
     }
@@ -40,7 +40,7 @@ class Config
     /**
      * @return bool
      */
-    public static function isLiteral(): bool
+    public static function isLiteral()
     {
         return self::$literal;
     }
@@ -50,7 +50,7 @@ class Config
      *
      * @return Config
      */
-    public static function setLiteral(bool $literal): Config
+    public static function setLiteral(bool $literal)
     {
         self::$literal = $literal;
     }

@@ -83,7 +83,7 @@ class Request
      *
 	 * @return array
 	 */
-	public static function getSegments(): array
+	public static function getSegments()
 	{
 		return self::$segments;
 	}
@@ -149,9 +149,11 @@ class Request
         // Further cleaning of the uri
 		$uri = str_replace(array('//', '../'), '/', trim($uri, '/'));
 
-		if (empty($uri)) {
-			$uri = '/';
-		}
+        if (defined('HTTP_BASE') && php_sapi_name() != 'cli' && !defined('STDIN')) {
+            $uri = trim(str_replace(HTTP_BASE, '', '/' . $uri), '/');
+        }
+
+        $uri = empty($uri) ? '/' : $uri;
 
         self::setUriString($uri);
 	}

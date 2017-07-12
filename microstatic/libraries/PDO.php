@@ -233,7 +233,7 @@ class PDO
     /**
      * @return array
      */
-    public static function getConnection(): array
+    public static function getConnection()
     {
         return self::$connection;
     }

@@ -145,7 +145,7 @@ class Router
      *
      * @return bool
      */
-    public static function isClosure(bool $bool = null): bool
+    public static function isClosure($bool = null)
     {
         if (!is_null($bool)) {
             self::$isClosure = $bool;
@@ -262,8 +262,8 @@ class Router
      * @param array|\Closure $callback
      */
     private static function register(
-        String $requestMethod,
-        String $uriPattern,
+        $requestMethod,
+        $uriPattern,
         $callback
     ) {
         extract(self::getGroupValues());
@@ -284,7 +284,7 @@ class Router
             // response and exit PHP
             if (self::matchLiteral(self::getGroupUriPrefix() . $uriPattern)) {
                 Response::send($callback());
-                Response::exit();
+                Response::close();
             }
 
             // If we have a wildcard  match, we pass the wildcard value to
@@ -293,7 +293,7 @@ class Router
                 Response::send(
                     call_user_func_array($callback, $matches)
                 );
-                Response::exit();
+                Response::close();
             }
         }
 
@@ -347,7 +347,7 @@ class Router
      *
      * @return mixed
      */
-    public static function list($method = null)
+    public static function routes($method = null)
     {
         return self::$routes->get($method);
     }
@@ -364,7 +364,7 @@ class Router
         $uri = $uriString ? $uriString : Request::getUriString();
 
         // Get the registered routes by http request method
-        $routes = self::list(
+        $routes = self::routes(
             Request::getRequestMethod()
         )->getArray();
 

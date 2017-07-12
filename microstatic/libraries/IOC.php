@@ -42,7 +42,7 @@ class IOC
     public static $config = [];
 
 
-    public static function config(string $key, array $array = null)
+    public static function config($key, $array = null)
     {
         if (is_array($array) && !isset(static::$config[$key])) {
             static::$config[$key] = $array;
@@ -54,7 +54,7 @@ class IOC
     /**
      * @return string
      */
-    public static function getNamespace(): string
+    public static function getNamespace()
     {
         return self::$namespace;
     }
@@ -62,7 +62,7 @@ class IOC
     /**
      * @param string $namespace
      */
-    public static function setNamespace(string $namespace)
+    public static function setNamespace($namespace)
     {
         self::$namespace = $namespace;
     }

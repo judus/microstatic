@@ -121,6 +121,7 @@ class Response
     public static function sendPrepared()
     {
         echo self::getContent();
+        self::close();
     }
 
     /**
@@ -190,13 +191,13 @@ class Response
         header($_SERVER["SERVER_PROTOCOL"] . " 404 Not Found");
         echo "<h1>404 Not Found</h1>";
         echo "The page that you have requested could not be found.";
-        self::exit();
+        self::close();
     }
 
     /**
 	 * Exit PHP
 	 */
-	public static function exit()
+	public static function close()
 	{
 		exit();
 	}
