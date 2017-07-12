@@ -38,3 +38,6 @@ composer.lock
 /config/production.php
 /config/env.php
 /tools/
+/microstatic/config/development.php
+/microstatic/config/env.php
+/microstatic/config/production.php
