@@ -80,24 +80,20 @@ class Config
         return self::$items[$name];
     }
 
-    public static function init($file, $basePath = null)
+    public static function init($config = null, $basePath = null)
     {
         $basePath = $basePath ? $basePath : realpath(__DIR__ .'/../');
-        defined('BASE_PATH') || define('BASE_PATH', $basePath);
+        defined('PATH') || define('PATH', $basePath);
 
-        self::file(rtrim($basePath, '/') . '/' . ltrim($file, '/'));
-
-    }
-
-    public static function file($file)
-    {
-        /** @noinspection PhpIncludeInspection */
-        self::setItems(
-            array_merge_recursive(self::getItems(), require_once $file)
-        );
+        if (is_array($config)) {
+            self::setItems($config);
+        } else {
+            self::file(rtrim($basePath, '/') . '/' . ltrim($config, '/'));
+        }
 
         if (isset(self::$items['errors'])) {
-            ini_set('error_reporting', self::$items['errors']['error_reporting']);
+            ini_set('error_reporting',
+                self::$items['errors']['error_reporting']);
             ini_set('display_errors', self::$items['errors']['display_errors']);
         }
 
@@ -114,6 +110,14 @@ class Config
                 defined($key) || define($key, $path);
             }
         }
+    }
+
+    public static function file($file)
+    {
+        /** @noinspection PhpIncludeInspection */
+        self::setItems(
+            array_merge_recursive(self::getItems(), require_once $file)
+        );
     }
 
     /**

@@ -1,4 +1,4 @@
-<?php namespace MicroStatic;
+<?php
 
 if (!function_exists('view')) {
     /**

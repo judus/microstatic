@@ -1,9 +1,9 @@
-<?php namespace Acme\Controllers;
+<?php namespace App\Demo\Controllers;
 
 /**
  * Class YourController
  *
- * @package Acme\Pages\Controllers
+ * @package App\Demo\Controllers
  */
 class YourController
 {
@@ -17,9 +17,7 @@ class YourController
         $countTo = 1000000000;
 
         $start = time();
-        for ($i = 0; $i < $countTo; $i++) {
-            $i;
-        }
+        for ($i = 0; $i < $countTo; $i++) {}
         $end = time();
 
         $period = $end - $start;

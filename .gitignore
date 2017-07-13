@@ -41,3 +41,10 @@ composer.lock
 /microstatic/config/development.php
 /microstatic/config/env.php
 /microstatic/config/production.php
+/microstatic/storage/*
+!/microstatic/storage/filemanager/
+/microstatic/storage/filemanager/*
+!/microstatic/storage/filemanager/.gitkeep
+!/microstatic/storage/cache/
+/microstatic/storage/cache/*
+!/microstatic/storage/cache/.gitkeep

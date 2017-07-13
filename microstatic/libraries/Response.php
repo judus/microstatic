@@ -121,7 +121,6 @@ class Response
     public static function sendPrepared()
     {
         echo self::getContent();
-        self::close();
     }
 
     /**
@@ -181,7 +180,7 @@ class Response
      *
      * @param $url
      */
-    public static function redirect($url)
+    public static function redirect($url = '/')
     {
         header('Location: ' . $url);
     }

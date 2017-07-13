@@ -1,14 +1,9 @@
-<?php namespace Acme\Controllers;
+<?php namespace App\Demo\Controllers;
 
 /**
  * Class UserController
  *
- * @package Acme\Pages\Controllers
- */
-/**
- * Class UserController
- *
- * @package Acme\Controllers
+ * @package App\Demo\Controllers
  */
 class UserController
 {
@@ -40,6 +35,8 @@ class UserController
     }
 
     /**
+     * @param $id
+     *
      * @return string
      */
     public function editForm($id)

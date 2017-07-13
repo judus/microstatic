@@ -1,28 +1,19 @@
-<?php namespace Acme\Controllers;
+<?php namespace App\Demo\Controllers;
 
-use Maduser\Minimal\Interfaces\ResponseInterface;
+use MicroStatic\Response;
 
 /**
  * Class AuthController
  *
- * @package Acme\Pages\Controllers
+ * @package App\Demo\Controllers
  */
 class AuthController
 {
     /**
-     * @var ResponseInterface
-     */
-    private $response;
-
-    /**
      * AuthController constructor.
-     *
-     * @param ResponseInterface $response
      */
-    public function __construct(ResponseInterface $response)
+    public function __construct()
     {
-        $this->response = $response;
-
         if (session_status() == PHP_SESSION_NONE) {
             session_start();
         }
@@ -55,7 +46,7 @@ class AuthController
     public function login()
     {
         $_SESSION['currentUser'] = 'jondoe';
-        $this->redirect();
+        Response::redirect();
     }
 
     /**
@@ -64,7 +55,7 @@ class AuthController
     public function logout()
     {
         unset($_SESSION['currentUser']);
-        $this->response->redirect('/auth/login');
+        Response::redirect('/auth/login');
     }
 
     /**
@@ -87,9 +78,9 @@ class AuthController
         if (isset($_SESSION['redirectUrl'])) {
             $redirectUrl = $_SESSION['redirectUrl'];
             unset($_SESSION['redirectUrl']);
-            $this->response->redirect($redirectUrl);
+            Response::redirect($redirectUrl);
         } else {
-            $this->response->redirect('/auth/login');
+            Response::redirect('/auth/login');
         }
     }
 }

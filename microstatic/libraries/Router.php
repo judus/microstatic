@@ -438,10 +438,13 @@ class Router
 
         $route = Router::getRoute();
 
-        Response::setContent(call_user_func_array(
-            [IOC::make($route->getController()), $route->getAction()],
-            $route->getParams()
-        ));
+        Response::setContent(
+            Middleware::dispatch(function() use ($route) {
+                FrontController::dispatch($route);
+            }, $route->getMiddlewares())
+        );
+
+
 
         Response::send();
 
