@@ -114,10 +114,12 @@ class Config
 
     public static function file($file)
     {
-        /** @noinspection PhpIncludeInspection */
-        self::setItems(
-            array_merge_recursive(self::getItems(), require_once $file)
-        );
+        if (is_file($file)) {
+            /** @noinspection PhpIncludeInspection */
+            self::setItems(
+                array_merge_recursive(self::getItems(), require_once $file)
+            );
+        }
     }
 
     /**
