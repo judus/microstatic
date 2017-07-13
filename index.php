@@ -1,6 +1,5 @@
 <?php namespace MicroStatic;
 
-require __DIR__ . '/vendor/autoload.php';
 require __DIR__ . '/microstatic/helpers/loader.php';
 
 Micro::run([
